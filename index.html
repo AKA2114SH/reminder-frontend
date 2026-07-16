@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BAAP Notify — Notification Service Admin</title>
+    
+    <!-- Google Fonts Preconnect & Styling -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- CDN Fallback for Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              destructive: {
+                DEFAULT: "hsl(var(--destructive))",
+                foreground: "hsl(var(--destructive-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+              popover: {
+                DEFAULT: "hsl(var(--popover))",
+                foreground: "hsl(var(--popover-foreground))",
+              },
+              card: {
+                DEFAULT: "hsl(var(--card))",
+                foreground: "hsl(var(--card-foreground))",
+              },
+              sidebar: {
+                DEFAULT: "hsl(var(--sidebar-background))",
+                foreground: "hsl(var(--sidebar-foreground))",
+                primary: "hsl(var(--sidebar-primary))",
+                "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+                accent: "hsl(var(--sidebar-accent))",
+                "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
+                border: "hsl(var(--sidebar-border))",
+                ring: "hsl(var(--sidebar-ring))",
+              },
+              success: {
+                DEFAULT: "hsl(var(--success))",
+                foreground: "hsl(var(--success-foreground))",
+              },
+              warning: {
+                DEFAULT: "hsl(var(--warning))",
+                foreground: "hsl(var(--warning-foreground))",
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/start.tsx"></script>
+  </body>
+</html>
