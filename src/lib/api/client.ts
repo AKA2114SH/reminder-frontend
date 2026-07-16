@@ -3,7 +3,8 @@
 // Uses working endpoints only
 // ============================================
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+// ✅ USE RELATIVE PATHS - Remove API_BASE entirely
+// const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
 const CLIENT_ID = import.meta.env.VITE_CLIENT_ID || 'a3ea1cda-c735-4798-8219-54bbb07795a9';
 
 // ============================================
@@ -371,15 +372,19 @@ initLocalStorage();
 
 // ============================================
 // API FETCH WITH UNIFIED ERROR BOUNDARY
+// ✅ Uses RELATIVE PATHS - no API_BASE
 // ============================================
 
 export async function apiFetch<T>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
-  const url = `${API_BASE}${endpoint}`;
+  // ✅ Use relative path directly (no API_BASE concatenation)
+  const url = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  
   const headers: HeadersInit = {
     'x-client-id': CLIENT_ID,
+    'x-requested-with': 'XMLHttpRequest', // ✅ Required for CORS proxy
     ...(options.body && !(options.body instanceof FormData)
       ? { 'Content-Type': 'application/json' }
       : {}),
@@ -501,7 +506,6 @@ export const NotificationApi = {
         const tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]');
         const toVal = Array.isArray(data.to) ? data.to.join(', ') : data.to;
         
-        // Add new task at the beginning of logs list
         tasks.unshift({
           id: res.taskId,
           taskId: res.taskId,
@@ -747,7 +751,6 @@ export const taskApi = {
       return res;
     } catch (error: any) {
       if (error?.statusCode === 404) {
-        // Fallback or warning
         console.warn('Backend endpoints returning 404. Falling back to empty lists.');
         return { success: true, data: [] };
       }
@@ -854,7 +857,6 @@ export const taskApi = {
     let page = 1;
     let hasMore = true;
     
-    // Fetch up to 5000 tasks max to prevent infinite loops/memory issues
     while (hasMore && allTasks.length < 5000) {
       try {
         const response = await taskApi.getTasks({
