@@ -4,7 +4,7 @@
 // ============================================
 
 // ✅ USE RELATIVE PATHS - Remove API_BASE entirely
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://br90xiwuh4.execute-api.ap-south-1.amazonaws.com';
+const API_BASE = 'https://br90xiwuh4.execute-api.ap-south-1.amazonaws.com';
 const CLIENT_ID = import.meta.env.VITE_CLIENT_ID || 'a3ea1cda-c735-4798-8219-54bbb07795a9';
 
 // ============================================
