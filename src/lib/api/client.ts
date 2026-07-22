@@ -388,7 +388,6 @@ export async function apiFetch<T>(
   
   const headers: HeadersInit = {
     'x-client-id': CLIENT_ID,
-    'x-requested-with': 'XMLHttpRequest', // ✅ Required for CORS proxy
     ...(options.body && !(options.body instanceof FormData)
       ? { 'Content-Type': 'application/json' }
       : {}),
