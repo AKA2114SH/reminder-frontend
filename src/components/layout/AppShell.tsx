@@ -51,11 +51,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <div className="flex items-center gap-2 rounded-full border bg-muted/50 px-2.5 py-0.5">
                   <span
                     className={`inline-block h-2 w-2 rounded-full ${
-                      health?.status === 'ok' ? 'bg-success animate-pulse' : 'bg-destructive'
+                      health?.status === 'ok' || health?.status === 'healthy' || health?.status === 'UP' ? 'bg-success animate-pulse' : 'bg-destructive'
                     }`}
                   />
                   <span className="text-xs font-medium text-muted-foreground">
-                    {health?.status === 'ok' ? 'Healthy' : 'Unhealthy'}
+                    {health?.status === 'ok' || health?.status === 'healthy' || health?.status === 'UP' ? 'Healthy' : 'Unhealthy'}
                   </span>
                 </div>
                 <ThemeToggle />

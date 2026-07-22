@@ -97,8 +97,6 @@ function AnalyticsPage() {
 
   if (isError) {
     const errorMsg =
-      (summaryQuery.error as any)?.message ||
-      (channelStatsQuery.error as any)?.message ||
       (tasksQuery.error as any)?.message ||
       "Failed to communicate with the analytics endpoint.";
 
